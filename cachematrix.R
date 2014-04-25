@@ -33,16 +33,18 @@ makeCacheMatrix <- function(x = matrix()) {
 ## 2. Otherwise, it calculates the inverse of the numeric matrix 
 ##    and sets the value of the mean in the cache via the setmean function.
 
-cacheSolve <- function(flist, x) {
-        ## Inputs are a list of functions "flist" (created by makeCacheMatrix) and the numeric matrix "x"
-        ## Attempt to get the inverse matrix
+cacheSolve <- function(flist, ...) {
+        ## Inputs is the list of functions "flist" (created by makeCacheMatrix) 
+        ## Attempt to first get the inverse matrix
   inv_x <- flist$getinverse()
         ## If inverse matrix already exists then return it
   if(!is.null(inv_x)) { 
     message("getting cached data")
     return(inv_x) 
         ## Otherwise set the inverse and return it
-  } else inv <- flist$setinverse(x)
+  } else 
+    data <- x$get()
+    inv_x <- flist$setinverse(data)
     message("setting inverse and storing in cache")
     return(inv_x)
 }
