@@ -29,9 +29,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 ## cacheSolve returns the inverse of a numeric matrix by:
-## 1. Checking to see if the inverse has already been calculated. If so, it gets the mean from the cache 
-## 2. Otherwise, it calculates the inverse of the numeric matrix 
-##    and sets the value of the mean in the cache via the setmean function.
+## 1. Checking to see if the inverse has already been calculated. If so, it gets the inverse from the cache 
+## 2. Otherwise, it calculates the inverse of the numeric matrix and stores it in cache memory
 
 cacheSolve <- function(flist, ...) {
         ## Inputs is the list of functions "flist" (created by makeCacheMatrix) 
